@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={`${newsreader.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-serif text-[15px] leading-snug">
+      <body className="min-h-full flex flex-col font-serif text-base leading-[1.6] sm:text-[17px]">
         {children}
       </body>
     </html>

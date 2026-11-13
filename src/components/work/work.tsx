@@ -9,7 +9,7 @@ import { FeaturedProject } from "@/components/work/featured-project";
 const copy = sectionCopy.work;
 
 /** Fila del índice: (nº) · proyecto · stack · año · enlace. */
-const rowClass = `${grid} border-t border-rule py-3 lg:items-baseline`;
+const rowClass = `${grid} border-t border-rule py-5 lg:items-baseline`;
 
 function index(n: number): string {
   return `(${String(n).padStart(2, "0")})`;
@@ -62,7 +62,7 @@ export function Work() {
   const { identity, featuredProject } = portfolio;
   return (
     <section id="trabajo" aria-labelledby="trabajo-title" className={sectionSpace}>
-      <div className={`${grid} pb-3 text-muted`}>
+      <div className={`${grid} pb-5 text-muted`}>
         <h2 id="trabajo-title" className="text-foreground">
           {copy.title}
         </h2>
@@ -102,7 +102,7 @@ export function Work() {
         </Suspense>
       </ol>
 
-      <div className={`${grid} pt-3`}>
+      <div className={`${grid} pt-6`}>
         <a
           href={`https://github.com/${identity.githubUsername}`}
           target="_blank"

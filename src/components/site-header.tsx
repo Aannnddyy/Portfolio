@@ -6,7 +6,7 @@ export function SiteHeader() {
   const social = portfolio.contact.filter((c) => c.external);
   return (
     <header className="sticky top-0 z-20 bg-background/90 backdrop-blur-sm">
-      <nav aria-label="Principal" className={`${grid} items-center py-4`}>
+      <nav aria-label="Principal" className={`${grid} items-center py-5`}>
         <a href="#inicio" className={`${link} justify-self-start lg:col-span-2`}>
           <span className="sm:hidden">{portfolio.identity.firstName}</span>
           <span className="hidden sm:inline">{portfolio.identity.name}</span>
