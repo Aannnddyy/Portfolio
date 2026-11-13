@@ -40,3 +40,53 @@ body {
   background: var(--foreground);
   color: var(--background);
 }
+
+/*
+ * Enlaces: subrayado fino siempre visible (también en táctil) y, al pasar el
+ * ratón o enfocar con teclado, una manicule ☞ de imprenta a la izquierda.
+ * La manita va en posición absoluta para no mover el texto y tiene texto
+ * alternativo vacío para que los lectores de pantalla no la anuncien.
+ */
+@layer components {
+  .ink-link {
+    position: relative;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    text-decoration-color: color-mix(in srgb, var(--foreground) 30%, transparent);
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .ink-link::before {
+    content: "\261E\FE0E"; /* navegadores sin texto alternativo en `content` */
+    content: "\261E\FE0E" / "";
+    position: absolute;
+    right: 100%;
+    margin-right: 0.35em;
+    font-style: normal;
+    opacity: 0;
+    transform: translateX(-0.3em);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+    pointer-events: none;
+  }
+
+  .ink-link:hover,
+  .ink-link:focus-visible {
+    text-decoration-color: var(--foreground);
+  }
+
+  .ink-link:hover::before,
+  .ink-link:focus-visible::before {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ink-link,
+    .ink-link::before {
+      transition: none;
+    }
+  }
+}

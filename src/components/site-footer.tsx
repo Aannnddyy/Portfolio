@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className={`${grid} border-t border-rule py-4`}>
       <p className="lg:col-span-2">© {portfolio.identity.name}</p>
       <p className="hidden text-muted lg:block">{copy.location}</p>
-      <a href="#inicio" className={`${link} text-right lg:col-start-6`}>
+      <a href="#inicio" className={`${link} justify-self-end lg:col-start-6`}>
         {copy.backToTop} ↑
       </a>
     </footer>

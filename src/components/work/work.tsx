@@ -107,7 +107,7 @@ export function Work() {
           href={`https://github.com/${identity.githubUsername}`}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${link} col-start-2 text-right lg:col-start-6`}
+          className={`${link} col-start-2 justify-self-end lg:col-start-6`}
         >
           {copy.viewOnGithub} ↗
         </a>

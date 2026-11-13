@@ -7,10 +7,11 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 bg-background/90 backdrop-blur-sm">
       <nav aria-label="Principal" className={`${grid} items-center py-4`}>
-        <a href="#inicio" className={`${link} lg:col-span-2`}>
-          {portfolio.identity.name}
+        <a href="#inicio" className={`${link} justify-self-start lg:col-span-2`}>
+          <span className="sm:hidden">{portfolio.identity.firstName}</span>
+          <span className="hidden sm:inline">{portfolio.identity.name}</span>
         </a>
-        <ul className="flex justify-end gap-5 lg:col-span-3 lg:justify-start lg:gap-0">
+        <ul className="flex justify-end gap-6 lg:col-span-3 lg:justify-start lg:gap-0">
           {navLinks.map((item) => (
             <li key={item.href} className="lg:w-1/3">
               <a href={item.href} className={link}>
@@ -19,7 +20,7 @@ export function SiteHeader() {
             </li>
           ))}
         </ul>
-        <ul className="hidden justify-end gap-5 lg:flex">
+        <ul className="hidden justify-end gap-8 lg:flex">
           {social.map((s) => (
             <li key={s.kind}>
               <a href={s.href} target="_blank" rel="noopener noreferrer" className={link}>
