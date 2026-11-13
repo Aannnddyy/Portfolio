@@ -1,29 +1,42 @@
 import type { ReactNode } from "react";
+import { displayTitle, label } from "@/lib/ui";
 
 interface SectionProps {
   id: string;
+  /** Etiqueta pequeña sobre el título. */
+  eyebrow: string;
   title: string;
-  /** Palabra final del título, destacada en cursiva. */
-  accent?: string;
   subtitle?: string;
+  /** `dark` = franja burdeos con texto crema. */
+  tone?: "light" | "dark";
   children: ReactNode;
 }
 
-export function Section({ id, title, accent, subtitle, children }: SectionProps) {
+export function Section({ id, eyebrow, title, subtitle, tone = "light", children }: SectionProps) {
   const headingId = `${id}-title`;
+  const dark = tone === "dark";
   return (
-    <section id={id} aria-labelledby={headingId} className="scroll-mt-20 py-16 sm:py-24">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <header className="mb-10 max-w-2xl">
+    <section
+      id={id}
+      aria-labelledby={headingId}
+      className={`scroll-mt-14 py-20 sm:py-28 ${dark ? "bg-accent text-cream" : ""}`}
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-8">
+        <header className="mb-12 text-center sm:mb-16">
+          <p className={`${label} ${dark ? "text-cream/75" : "text-muted"}`}>{eyebrow}</p>
           <h2
             id={headingId}
-            className="font-serif text-3xl font-medium tracking-tight sm:text-4xl"
+            className={`${displayTitle} mt-3 text-4xl sm:text-6xl ${dark ? "" : "text-accent"}`}
           >
             {title}
-            {title && accent && " "}
-            {accent && <em className="text-accent">{accent}</em>}
           </h2>
-          {subtitle && <p className="mt-3 text-muted text-pretty">{subtitle}</p>}
+          {subtitle && (
+            <p
+              className={`mx-auto mt-4 max-w-xl text-pretty ${dark ? "text-cream/80" : "text-muted"}`}
+            >
+              {subtitle}
+            </p>
+          )}
         </header>
         {children}
       </div>

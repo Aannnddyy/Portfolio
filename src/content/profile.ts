@@ -40,7 +40,13 @@ export const portfolio: Portfolio = {
     },
   ],
 
+  keywords: ["Python", "Django REST", "PostgreSQL", "Celery", "Redis", "Spring Boot"],
+
   about: {
+    photo: {
+      src: "/andrea-bw.jpg",
+      alt: "Retrato en blanco y negro de Andrea Grañas López",
+    },
     paragraphs: [
       "Estudié Ingeniería de Tecnologías y Servicios de Telecomunicación en la Universidad Autónoma de Madrid, y empecé mi carrera entre antenas, bancos de pruebas y estaciones terrenas de satélite.",
       "Hoy trabajo como RF & Software Engineer en Aicox Soluciones. Con el tiempo he ido pasando de las pruebas de hardware a escribir scripts de automatización en Python, procesar montañas de datos de medición y resolver incidencias en sistemas críticos, en programas como SPAINSAT NG o el Ministerio de Defensa (CESTIC).",

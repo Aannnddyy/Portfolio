@@ -2,27 +2,7 @@ import Image from "next/image";
 import { portfolio } from "@/content/profile";
 import { sectionCopy } from "@/content/site";
 import { ContactLinks } from "@/components/contact-links";
-import { card } from "@/lib/ui";
-
-/** Subrayado "a mano" bajo el nombre. */
-function Squiggle() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 200 12"
-      preserveAspectRatio="none"
-      className="absolute -bottom-2 left-0 h-3 w-full text-accent/70"
-    >
-      <path
-        d="M2 8c22-5 40-5 58-1s34 4 52 0 40-6 86-1"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
+import { displayTitle, label } from "@/lib/ui";
 
 export function Hero() {
   const { identity, contact } = portfolio;
@@ -31,57 +11,40 @@ export function Hero() {
     <section
       id="inicio"
       aria-labelledby="inicio-title"
-      className="mx-auto grid max-w-5xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 md:grid-cols-[1fr_auto]"
+      className="relative overflow-hidden bg-sand"
     >
-      <div>
-        <h1
-          id="inicio-title"
-          className="font-serif text-5xl font-medium tracking-tight sm:text-7xl"
-        >
-          {copy.greeting}{" "}
-          <span className="relative inline-block italic text-accent">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 pt-12 sm:px-8 md:grid-cols-[1fr_minmax(0,26rem)] md:pt-16">
+        <div className="relative z-10 flex flex-col justify-between gap-10 md:pb-16">
+          <div>
+            <p className={`${label} text-muted`}>{copy.kicker}</p>
+            <p className={`${displayTitle} mt-5 max-w-lg text-2xl text-accent sm:text-4xl`}>
+              {copy.headline}
+            </p>
+            <div className="mt-8">
+              <ContactLinks links={contact} primary="cv" />
+            </div>
+          </div>
+          <h1
+            id="inicio-title"
+            className={`${displayTitle} text-[clamp(4.5rem,15vw,11rem)] text-accent md:-mr-48`}
+          >
             {identity.firstName}
-            <Squiggle />
-          </span>
-        </h1>
-        <p className="mt-6 text-sm text-muted">
-          {identity.name} · {identity.role}
-        </p>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-pretty">
-          {identity.tagline}
-        </p>
-        <div className="mt-10">
-          <ContactLinks links={contact} primary="cv" />
+            <span className="sr-only"> Grañas López, {identity.role}</span>
+          </h1>
         </div>
-      </div>
 
-      <aside className="flex flex-row items-center gap-6 md:flex-col md:items-center">
-        <div className="relative shrink-0">
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 translate-x-2 translate-y-2 rounded-full bg-lilac/30"
-          />
+        <div className="relative self-end">
           <Image
             src={identity.photo.src}
             alt={identity.photo.alt}
-            width={250}
-            height={250}
+            width={800}
+            height={1000}
+            sizes="(min-width: 768px) 26rem, 100vw"
             preload
-            className="relative size-28 rounded-full object-cover ring-4 ring-accent/40 sm:size-40"
+            className="aspect-[4/5] w-full object-cover mix-blend-multiply"
           />
         </div>
-        <div className={`${card} max-w-56 -rotate-1 px-4 py-3 text-sm`}>
-          <p className="font-serif italic text-accent">{copy.nowTitle}…</p>
-          <ul className="mt-1.5 space-y-1 text-muted">
-            {identity.now.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className="mt-2 text-xs text-muted/80">
-            {copy.locationPrefix} {identity.location}
-          </p>
-        </div>
-      </aside>
+      </div>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/hero";
+import { Vision } from "@/components/vision";
 import { About } from "@/components/about";
 import { Projects } from "@/components/projects/projects";
 import { Stack } from "@/components/stack";
@@ -13,6 +14,7 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <Hero />
+        <Vision />
         <About />
         <Projects />
         <Stack />

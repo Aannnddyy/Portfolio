@@ -1,34 +1,29 @@
 import type { FeaturedProject as FeaturedProjectData } from "@/types/portfolio";
 import { sectionCopy } from "@/content/site";
-import { buttonSecondary, card, eyebrow, tag } from "@/lib/ui";
+import { buttonPrimary, displayTitle, label } from "@/lib/ui";
 
+/** Tarjeta crema sobre la franja burdeos. */
 export function FeaturedProject({ project }: { project: FeaturedProjectData }) {
   const copy = sectionCopy.projects;
   return (
-    <article aria-labelledby="featured-title" className={`${card} overflow-hidden`}>
-      <div className="p-6 sm:p-8">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
-          <span className={eyebrow}>{copy.featuredBadge}</span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-0.5 text-xs text-accent">
-            <span aria-hidden="true" className="size-1.5 animate-pulse rounded-full bg-accent motion-reduce:animate-none" />
-            {project.status}
-          </span>
-          <span className="text-xs text-muted">{project.period}</span>
-        </div>
-        <h3
-          id="featured-title"
-          className="mt-4 font-serif text-3xl font-medium tracking-tight sm:text-4xl"
-        >
-          {project.title}
-        </h3>
-        <p className="mt-1 text-sm text-muted">{project.subtitle}</p>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed">{project.description}</p>
-      </div>
-
-      <div className="grid gap-8 border-t border-border/70 p-6 sm:p-8 lg:grid-cols-2">
+    <article aria-labelledby="featured-title" className="bg-surface text-foreground">
+      <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
         <div>
-          <h4 className="font-serif text-lg italic text-accent">{copy.architectureTitle}</h4>
-          <div className="mt-4 space-y-5">
+          <p className={`${label} text-muted`}>
+            {copy.featuredBadge} · {project.status}
+          </p>
+          <h3
+            id="featured-title"
+            className={`${displayTitle} mt-4 text-4xl text-accent sm:text-6xl`}
+          >
+            {project.title}
+          </h3>
+          <p className="mt-3 font-serif text-lg italic">{project.subtitle}</p>
+          <p className="mt-1 text-sm text-muted">{project.period}</p>
+          <p className="mt-6 leading-relaxed">{project.description}</p>
+
+          <h4 className={`${label} mt-10 text-accent`}>{copy.architectureTitle}</h4>
+          <div className="mt-4 space-y-4">
             {project.flows.map((flow) => (
               <figure key={flow.label}>
                 <figcaption className="text-xs text-muted">{flow.label}</figcaption>
@@ -36,11 +31,11 @@ export function FeaturedProject({ project }: { project: FeaturedProjectData }) {
                   {flow.steps.map((step, i) => (
                     <li key={step} className="flex items-center gap-2">
                       {i > 0 && (
-                        <span aria-hidden="true" className="text-accent/70">
+                        <span aria-hidden="true" className="text-accent">
                           →
                         </span>
                       )}
-                      <span className="rounded-full border border-border bg-background px-3 py-1 font-mono text-xs">
+                      <span className="border border-border px-2.5 py-1 font-mono text-xs">
                         {step}
                       </span>
                     </li>
@@ -51,41 +46,41 @@ export function FeaturedProject({ project }: { project: FeaturedProjectData }) {
           </div>
         </div>
 
-        <div>
-          <h4 className="font-serif text-lg italic text-accent">{copy.highlightsTitle}</h4>
-          <ul className="mt-4 space-y-4">
-            {project.highlights.map((h) => (
-              <li key={h.title} className="flex gap-3">
-                <span aria-hidden="true" className="mt-0.5 text-accent">
-                  ✦
+        <div className="flex flex-col">
+          <h4 className={`${label} text-accent`}>{copy.highlightsTitle}</h4>
+          <ol className="mt-4 divide-y divide-border border-y border-border">
+            {project.highlights.map((h, i) => (
+              <li key={h.title} className="flex gap-5 py-5">
+                <span aria-hidden="true" className="font-serif text-3xl leading-none text-accent">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <p className="text-sm font-medium">{h.title}</p>
+                  <p className="font-serif text-xl">{h.title}</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted">{h.text}</p>
                 </div>
               </li>
             ))}
-          </ul>
-        </div>
-      </div>
+          </ol>
 
-      <div className="flex flex-col gap-4 border-t border-border/70 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-        <ul className="flex flex-wrap gap-1.5" aria-label="Tecnologías">
-          {project.tags.map((t) => (
-            <li key={t} className={tag}>
-              {t}
-            </li>
-          ))}
-        </ul>
-        <a
-          href={project.repoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${buttonSecondary} shrink-0`}
-        >
-          {copy.repoLink} →
-          <span className="sr-only"> de {project.title} (se abre en otra pestaña)</span>
-        </a>
+          <ul
+            className="mt-6 flex flex-wrap gap-x-4 gap-y-1 text-xs tracking-wide text-muted uppercase"
+            aria-label="Tecnologías"
+          >
+            {project.tags.map((t) => (
+              <li key={t}>{t}</li>
+            ))}
+          </ul>
+
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${buttonPrimary} mt-8 self-start`}
+          >
+            {copy.repoLink}
+            <span className="sr-only"> de {project.title} (se abre en otra pestaña)</span>
+          </a>
+        </div>
       </div>
     </article>
   );
