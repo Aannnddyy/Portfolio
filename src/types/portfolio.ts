@@ -24,7 +24,6 @@ export interface Identity {
 }
 
 export interface About {
-  photo: { src: string; alt: string };
   paragraphs: readonly string[];
 }
 
