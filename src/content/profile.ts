@@ -40,8 +40,6 @@ export const portfolio: Portfolio = {
     },
   ],
 
-  keywords: ["Python", "Django REST", "PostgreSQL", "Celery", "Redis", "Spring Boot"],
-
   about: {
     photo: {
       src: "/andrea-bw.jpg",
@@ -51,12 +49,6 @@ export const portfolio: Portfolio = {
       "Estudié Ingeniería de Tecnologías y Servicios de Telecomunicación en la Universidad Autónoma de Madrid, y empecé mi carrera entre antenas, bancos de pruebas y estaciones terrenas de satélite.",
       "Hoy trabajo como RF & Software Engineer en Aicox Soluciones. Con el tiempo he ido pasando de las pruebas de hardware a escribir scripts de automatización en Python, procesar montañas de datos de medición y resolver incidencias en sistemas críticos, en programas como SPAINSAT NG o el Ministerio de Defensa (CESTIC).",
       "Ahora quiero dedicarme por completo al backend: diseñar APIs robustas, trabajar con bases de datos relacionales y arquitecturas asíncronas. Mientras tanto, lo pongo en práctica en proyectos propios con Django REST Framework y me estoy formando en Java y Spring Boot.",
-    ],
-    facts: [
-      { label: "Vivo en", value: "Madrid" },
-      { label: "Trabajo en", value: "Aicox Soluciones" },
-      { label: "Estudié en", value: "la UAM (Teleco)" },
-      { label: "Me interesa", value: "Backend, APIs y bases de datos" },
     ],
   },
 

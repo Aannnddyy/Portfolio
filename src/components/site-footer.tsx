@@ -1,23 +1,16 @@
 import { portfolio } from "@/content/profile";
 import { sectionCopy } from "@/content/site";
-import { focusRingLight } from "@/lib/ui";
+import { grid, link } from "@/lib/ui";
 
 export function SiteFooter() {
   const copy = sectionCopy.footer;
   return (
-    <footer className="bg-accent text-cream">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 border-t border-cream/20 px-4 py-8 text-xs tracking-[0.18em] text-cream/80 uppercase sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <p>
-          <span className="font-serif text-sm tracking-wide text-cream">
-            {portfolio.identity.name}
-          </span>
-          {" · "}
-          {copy.madeWith}
-        </p>
-        <a href="#inicio" className={`hover:text-cream ${focusRingLight}`}>
-          {copy.backToTop} ↑
-        </a>
-      </div>
+    <footer className={`${grid} border-t border-rule py-4`}>
+      <p className="lg:col-span-2">© {portfolio.identity.name}</p>
+      <p className="hidden text-muted lg:block">{copy.location}</p>
+      <a href="#inicio" className={`${link} text-right lg:col-start-6`}>
+        {copy.backToTop} ↑
+      </a>
     </footer>
   );
 }

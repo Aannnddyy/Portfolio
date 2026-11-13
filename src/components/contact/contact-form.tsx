@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { sectionCopy } from "@/content/site";
-import { buttonPrimaryLight, focusRingLight, label } from "@/lib/ui";
+import { focusRing, link } from "@/lib/ui";
 
 const copy = sectionCopy.contact.form;
 
-/** Campos con solo línea inferior, pensados para la franja burdeos. */
-const fieldClass = `mt-2 block w-full border-0 border-b border-cream/40 bg-transparent px-0 py-2 text-base tracking-normal normal-case text-cream transition-colors focus:border-cream ${focusRingLight}`;
+/** Campos de una sola línea inferior, sin cajas. */
+const fieldClass = `mt-1 block w-full border-0 border-b border-rule bg-transparent px-0 py-1.5 transition-colors focus:border-foreground ${focusRing}`;
 
 function field(data: FormData, name: string): string {
   const value = data.get(name);
@@ -33,46 +33,44 @@ export function ContactForm({ email }: { email: string }) {
   }
 
   return (
-    <form action={send} className="space-y-6">
-      <div className="grid gap-6 sm:grid-cols-2">
-        <label className={`block ${label} text-cream/80`}>
-          {copy.name}
-          <input
-            name="name"
-            type="text"
-            required
-            autoComplete="name"
-            maxLength={100}
-            className={fieldClass}
-          />
-        </label>
-        <label className={`block ${label} text-cream/80`}>
-          {copy.email}
-          <input
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            maxLength={200}
-            className={fieldClass}
-          />
-        </label>
-      </div>
-      <label className={`block ${label} text-cream/80`}>
+    <form action={send} className="space-y-5">
+      <label className="block text-muted">
+        {copy.name}
+        <input
+          name="name"
+          type="text"
+          required
+          autoComplete="name"
+          maxLength={100}
+          className={`${fieldClass} text-foreground`}
+        />
+      </label>
+      <label className="block text-muted">
+        {copy.email}
+        <input
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          maxLength={200}
+          className={`${fieldClass} text-foreground`}
+        />
+      </label>
+      <label className="block text-muted">
         {copy.message}
         <textarea
           name="message"
           required
-          rows={5}
+          rows={4}
           maxLength={2000}
-          className={`${fieldClass} resize-y`}
+          className={`${fieldClass} resize-y text-foreground`}
         />
       </label>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <button type="submit" className={`${buttonPrimaryLight} cursor-pointer`}>
-          {copy.submit}
+      <div>
+        <button type="submit" className={`${link} cursor-pointer underline`}>
+          {copy.submit} →
         </button>
-        <p className="text-xs text-cream/75" aria-live="polite">
+        <p className="mt-2 text-muted" aria-live="polite">
           {sent ? copy.sent : copy.hint}
         </p>
       </div>

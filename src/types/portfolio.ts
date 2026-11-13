@@ -26,7 +26,6 @@ export interface Identity {
 export interface About {
   photo: { src: string; alt: string };
   paragraphs: readonly string[];
-  facts: readonly { label: string; value: string }[];
 }
 
 export interface ArchitectureHighlight {
@@ -76,8 +75,6 @@ export interface StackCategory {
 export interface Portfolio {
   identity: Identity;
   contact: readonly ContactLink[];
-  /** Palabras de la cinta animada. */
-  keywords: readonly string[];
   about: About;
   featuredProject: FeaturedProject;
   experience: readonly TimelineEntry[];
