@@ -7,7 +7,7 @@ import { focusRing, link } from "@/lib/ui";
 const copy = sectionCopy.contact.form;
 
 /** Campos de una sola línea inferior, sin cajas. */
-const fieldClass = `mt-1 block w-full border-0 border-b border-rule bg-transparent px-0 py-1.5 transition-colors focus:border-foreground ${focusRing}`;
+const fieldClass = `mt-2 block w-full border-0 border-b border-rule bg-transparent px-0 py-2 transition-colors focus:border-foreground ${focusRing}`;
 
 function field(data: FormData, name: string): string {
   const value = data.get(name);
@@ -33,7 +33,7 @@ export function ContactForm({ email }: { email: string }) {
   }
 
   return (
-    <form action={send} className="space-y-5">
+    <form action={send} className="space-y-8">
       <label className="block text-muted">
         {copy.name}
         <input
@@ -70,7 +70,7 @@ export function ContactForm({ email }: { email: string }) {
         <button type="submit" className={`${link} cursor-pointer underline`}>
           {copy.submit} →
         </button>
-        <p className="mt-2 text-muted" aria-live="polite">
+        <p className="mt-3 text-muted" aria-live="polite">
           {sent ? copy.sent : copy.hint}
         </p>
       </div>

@@ -6,13 +6,13 @@ import { grid, link } from "@/lib/ui";
 export function Intro() {
   const { identity, contact, about } = portfolio;
   return (
-    <section id="inicio" aria-labelledby="inicio-title" className="pt-10 sm:pt-16">
-      <div className={`${grid} gap-y-10`}>
+    <section id="inicio" aria-labelledby="inicio-title" className="pt-14 sm:pt-24">
+      <div className={`${grid} gap-y-14`}>
         <div className="col-span-2 lg:col-span-3">
           <h1 id="inicio-title" className="sr-only">
             {identity.name}, {identity.role}
           </h1>
-          <p className="text-2xl leading-[1.2] text-pretty sm:text-[2rem]">{identity.tagline}</p>
+          <p className="text-2xl leading-[1.3] text-pretty sm:text-[2rem]">{identity.tagline}</p>
         </div>
 
         <Image
@@ -26,7 +26,7 @@ export function Intro() {
         />
 
         <div className="lg:col-start-6">
-          <ul>
+          <ul className="space-y-1">
             {contact.map((c) => (
               <li key={c.kind}>
                 <a
@@ -43,8 +43,8 @@ export function Intro() {
             <li className="text-muted">{identity.location}</li>
           </ul>
 
-          <p className="mt-8 text-muted">{sectionCopy.intro.nowTitle}</p>
-          <ul>
+          <p className="mt-10 mb-1 text-muted">{sectionCopy.intro.nowTitle}</p>
+          <ul className="space-y-1">
             {identity.now.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -52,7 +52,7 @@ export function Intro() {
         </div>
       </div>
 
-      <div className={`${grid} mt-24 gap-y-6 sm:mt-32`}>
+      <div className={`${grid} mt-32 gap-y-8 sm:mt-48`}>
         {about.paragraphs.map((paragraph) => (
           <p key={paragraph} className="col-span-2 text-pretty">
             {paragraph}
