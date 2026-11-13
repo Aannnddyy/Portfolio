@@ -40,7 +40,7 @@ export const portfolio: Portfolio = {
   about: {
     paragraphs: [
       "Soy Ingeniera de Tecnologías y Servicios de Telecomunicación por la Universidad Autónoma de Madrid (UAM).",
-      "Actualmente trabajo como RF & Software Engineer en Aicox Soluciones, donde he pasado de las pruebas de hardware/RF a desarrollar scripts de automatización en Python, procesar grandes volúmenes de datos de medición (Pandas, NumPy) y resolver incidencias operativas en sistemas críticos, en programas como SPAINSAT NG y Ministerio de Defensa / CESTIC.",
+      "Actualmente trabajo como RF & Software Engineer en Aicox Soluciones, donde he pasado de las pruebas de hardware/RF a desarrollar scripts de automatización en Python, procesar grandes volúmenes de datos de medición y resolver incidencias operativas en sistemas críticos, en programas como SPAINSAT NG y Ministerio de Defensa / CESTIC.",
       "Mi objetivo profesional es enfocar mi carrera al 100% en el desarrollo de software Backend: diseñar APIs robustas, trabajar con bases de datos relacionales y arquitecturas asíncronas. Actualmente aplico Python (Django REST Framework) en proyectos propios y me estoy formando activamente en Java y Spring Boot.",
     ],
     facts: [
@@ -103,7 +103,7 @@ export const portfolio: Portfolio = {
       location: "Madrid",
       bullets: [
         "Desarrollo de scripts de automatización en Python para ciclos de medición y captura de datos, reduciendo las pruebas manuales en banco.",
-        "Procesamiento y análisis automatizado de datasets con Python (Pandas, NumPy) para informes de validación en programas críticos como SPAINSAT NG (Hisdesat – Airbus) y el Ministerio de Defensa (CESTIC).",
+        "Procesamiento y análisis automatizado de datasets con Python para informes de validación en programas críticos como SPAINSAT NG (Hisdesat – Airbus) y el Ministerio de Defensa (CESTIC).",
         "Guardias operativas, resolución de incidencias en entornos reales y documentación técnica de sistemas.",
       ],
     },
@@ -129,7 +129,7 @@ export const portfolio: Portfolio = {
 
   languages: [
     { name: "Español", level: "Nativo" },
-    { name: "Inglés", level: "C1 comprensión · B2 expresión" },
+    { name: "Inglés", level: "C1" },
   ],
 
   stack: [
@@ -161,8 +161,6 @@ export const portfolio: Portfolio = {
         { name: "GNU/Linux" },
         { name: "macOS" },
         { name: "Postman" },
-        { name: "Pandas" },
-        { name: "NumPy" },
         { name: "MATLAB" },
       ],
     },
