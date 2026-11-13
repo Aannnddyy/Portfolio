@@ -1,57 +1,46 @@
 import type { FeaturedProject as FeaturedProjectData } from "@/types/portfolio";
 import { sectionCopy } from "@/content/site";
-import { buttonSecondary, card, tag } from "@/lib/ui";
+import { buttonSecondary, card, eyebrow, tag } from "@/lib/ui";
 
 export function FeaturedProject({ project }: { project: FeaturedProjectData }) {
   const copy = sectionCopy.projects;
   return (
-    <article
-      aria-labelledby="featured-title"
-      className={`${card} overflow-hidden`}
-    >
-      <div className="border-b border-border p-6 sm:p-8">
-        <div className="flex flex-wrap items-center gap-2 text-xs">
-          <span className="font-mono text-accent">{copy.featuredBadge}</span>
-          <span aria-hidden="true" className="text-border">
-            /
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-muted">
-            <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />
+    <article aria-labelledby="featured-title" className={`${card} overflow-hidden`}>
+      <div className="p-6 sm:p-8">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
+          <span className={eyebrow}>{copy.featuredBadge}</span>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-0.5 text-xs text-accent">
+            <span aria-hidden="true" className="size-1.5 animate-pulse rounded-full bg-accent motion-reduce:animate-none" />
             {project.status}
           </span>
-          <span aria-hidden="true" className="text-border">
-            /
-          </span>
-          <span className="text-muted">{project.period}</span>
+          <span className="text-xs text-muted">{project.period}</span>
         </div>
         <h3
           id="featured-title"
-          className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl"
+          className="mt-4 font-serif text-3xl font-medium tracking-tight sm:text-4xl"
         >
           {project.title}
         </h3>
-        <p className="mt-1 font-mono text-sm text-muted">{project.subtitle}</p>
-        <p className="mt-4 max-w-2xl leading-relaxed">{project.description}</p>
+        <p className="mt-1 text-sm text-muted">{project.subtitle}</p>
+        <p className="mt-5 max-w-2xl text-lg leading-relaxed">{project.description}</p>
       </div>
 
-      <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-2">
+      <div className="grid gap-8 border-t border-border/70 p-6 sm:p-8 lg:grid-cols-2">
         <div>
-          <h4 className="font-mono text-xs tracking-wide text-muted uppercase">
-            {copy.architectureTitle}
-          </h4>
+          <h4 className="font-serif text-lg italic text-accent">{copy.architectureTitle}</h4>
           <div className="mt-4 space-y-5">
             {project.flows.map((flow) => (
               <figure key={flow.label}>
                 <figcaption className="text-xs text-muted">{flow.label}</figcaption>
-                <ol className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-2">
+                <ol className="mt-2 flex flex-wrap items-center gap-2">
                   {flow.steps.map((step, i) => (
                     <li key={step} className="flex items-center gap-2">
                       {i > 0 && (
-                        <span aria-hidden="true" className="font-mono text-accent">
+                        <span aria-hidden="true" className="text-accent/70">
                           →
                         </span>
                       )}
-                      <span className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs">
+                      <span className="rounded-full border border-border bg-background px-3 py-1 font-mono text-xs">
                         {step}
                       </span>
                     </li>
@@ -62,17 +51,25 @@ export function FeaturedProject({ project }: { project: FeaturedProjectData }) {
           </div>
         </div>
 
-        <ul className="space-y-4">
-          {project.highlights.map((h) => (
-            <li key={h.title} className="border-l-2 border-accent/60 pl-4">
-              <p className="text-sm font-medium">{h.title}</p>
-              <p className="mt-1 text-sm leading-relaxed text-muted">{h.text}</p>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h4 className="font-serif text-lg italic text-accent">{copy.highlightsTitle}</h4>
+          <ul className="mt-4 space-y-4">
+            {project.highlights.map((h) => (
+              <li key={h.title} className="flex gap-3">
+                <span aria-hidden="true" className="mt-0.5 text-accent">
+                  ✦
+                </span>
+                <div>
+                  <p className="text-sm font-medium">{h.title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-muted">{h.text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <div className="flex flex-col gap-4 border-t border-border p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+      <div className="flex flex-col gap-4 border-t border-border/70 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
         <ul className="flex flex-wrap gap-1.5" aria-label="Tecnologías">
           {project.tags.map((t) => (
             <li key={t} className={tag}>
@@ -86,7 +83,7 @@ export function FeaturedProject({ project }: { project: FeaturedProjectData }) {
           rel="noopener noreferrer"
           className={`${buttonSecondary} shrink-0`}
         >
-          {copy.repoLink}
+          {copy.repoLink} →
           <span className="sr-only"> de {project.title} (se abre en otra pestaña)</span>
         </a>
       </div>

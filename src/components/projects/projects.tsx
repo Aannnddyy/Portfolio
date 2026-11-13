@@ -18,11 +18,8 @@ async function RepoList() {
 
   if (result.status === "error") {
     return (
-      <div
-        role="alert"
-        className="rounded-lg border border-red-400/40 bg-red-400/5 p-5 text-sm"
-      >
-        <p className="font-medium text-red-300">{copy.error}</p>
+      <div role="alert" className="rounded-2xl border border-red-300/30 bg-red-300/5 p-5 text-sm">
+        <p className="font-medium text-red-200">{copy.error}</p>
         <p className="mt-1 text-muted">{result.message}</p>
       </div>
     );
@@ -30,7 +27,7 @@ async function RepoList() {
 
   if (result.repos.length === 0) {
     return (
-      <p className="rounded-lg border border-dashed border-border p-8 text-center text-sm text-muted">
+      <p className="rounded-2xl border border-dashed border-border p-8 text-center text-sm text-muted">
         {copy.empty}
       </p>
     );
@@ -61,11 +58,11 @@ export function Projects() {
   const copy = sectionCopy.projects;
   const { identity, featuredProject } = portfolio;
   return (
-    <Section id="proyectos" title={copy.title} subtitle={copy.subtitle}>
+    <Section id="proyectos" title={copy.title} accent={copy.accent} subtitle={copy.subtitle}>
       <FeaturedProject project={featuredProject} />
 
       <div className="mt-16">
-        <h3 className="text-lg font-semibold tracking-tight">{copy.othersTitle}</h3>
+        <h3 className="font-serif text-2xl font-medium">{copy.othersTitle}</h3>
         <p className="mt-1 mb-6 text-sm text-muted">{copy.othersSubtitle}</p>
         <Suspense fallback={<RepoListSkeleton />}>
           <RepoList />

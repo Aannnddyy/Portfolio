@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
-/* Tema oscuro por defecto: contraste de texto ≥ 4.5:1 sobre el fondo. */
+/* Tema oscuro cálido por defecto: contraste de texto ≥ 4.5:1 sobre el fondo. */
 :root {
   color-scheme: dark;
-  --background: #0b0d10;
-  --foreground: #e6e8eb;
-  --surface: #12161b;
-  --muted: #9aa4b0;
-  --border: #252b33;
-  --accent: #5eead4;
+  --background: #151116;
+  --foreground: #f4ecef;
+  --surface: #1e181f;
+  --muted: #bcaeb6;
+  --border: #342a35;
+  --accent: #f4a7c4;
+  --lilac: #cdb9f5;
 }
 
 @theme inline {
@@ -18,8 +19,10 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-accent: var(--accent);
+  --color-lilac: var(--lilac);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-fraunces);
 }
 
 html {
@@ -38,5 +41,5 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
 }

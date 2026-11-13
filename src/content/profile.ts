@@ -6,7 +6,10 @@ const githubUsername = "Aannnddyy";
 export const portfolio: Portfolio = {
   identity: {
     name: "Andrea Grañas López",
+    firstName: "Andrea",
     role: "Telecommunications Engineer → Backend & Software Engineer",
+    photo: { src: "/andrea.jpg", alt: "Foto de Andrea Grañas López sonriendo" },
+    now: ["Construyendo SmartCloset", "Aprendiendo Java y Spring Boot"],
     tagline:
       "Ingeniera de Telecomunicaciones dando el salto al desarrollo Backend. Experiencia automatizando sistemas críticos y procesando datos en Python, construyendo APIs REST con Django/PostgreSQL y ampliando mi stack hacia Java y Spring Boot.",
     location: "Madrid, España",
@@ -39,15 +42,15 @@ export const portfolio: Portfolio = {
 
   about: {
     paragraphs: [
-      "Soy Ingeniera de Tecnologías y Servicios de Telecomunicación por la Universidad Autónoma de Madrid (UAM).",
-      "Actualmente trabajo como RF & Software Engineer en Aicox Soluciones, donde he pasado de las pruebas de hardware/RF a desarrollar scripts de automatización en Python, procesar grandes volúmenes de datos de medición y resolver incidencias operativas en sistemas críticos, en programas como SPAINSAT NG y Ministerio de Defensa / CESTIC.",
-      "Mi objetivo profesional es enfocar mi carrera al 100% en el desarrollo de software Backend: diseñar APIs robustas, trabajar con bases de datos relacionales y arquitecturas asíncronas. Actualmente aplico Python (Django REST Framework) en proyectos propios y me estoy formando activamente en Java y Spring Boot.",
+      "Estudié Ingeniería de Tecnologías y Servicios de Telecomunicación en la Universidad Autónoma de Madrid, y empecé mi carrera entre antenas, bancos de pruebas y estaciones terrenas de satélite.",
+      "Hoy trabajo como RF & Software Engineer en Aicox Soluciones. Con el tiempo he ido pasando de las pruebas de hardware a escribir scripts de automatización en Python, procesar montañas de datos de medición y resolver incidencias en sistemas críticos, en programas como SPAINSAT NG o el Ministerio de Defensa (CESTIC).",
+      "Ahora quiero dedicarme por completo al backend: diseñar APIs robustas, trabajar con bases de datos relacionales y arquitecturas asíncronas. Mientras tanto, lo pongo en práctica en proyectos propios con Django REST Framework y me estoy formando en Java y Spring Boot.",
     ],
     facts: [
-      { label: "Ubicación", value: "Madrid, España" },
-      { label: "Rol actual", value: "RF & Software Engineer · Aicox" },
-      { label: "Formación", value: "Ing. Telecomunicación · UAM" },
-      { label: "Foco", value: "Backend · APIs · Bases de datos" },
+      { label: "Vivo en", value: "Madrid" },
+      { label: "Trabajo en", value: "Aicox Soluciones" },
+      { label: "Estudié en", value: "la UAM (Teleco)" },
+      { label: "Me interesa", value: "Backend, APIs y bases de datos" },
     ],
   },
 

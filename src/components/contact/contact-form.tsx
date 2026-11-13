@@ -6,7 +6,7 @@ import { buttonPrimary, focusRing } from "@/lib/ui";
 
 const copy = sectionCopy.contact.form;
 
-const fieldClass = `mt-1.5 block w-full rounded-md border border-border bg-background px-3 py-2 text-sm placeholder:text-muted/60 ${focusRing}`;
+const fieldClass = `mt-1.5 block w-full rounded-xl border border-border bg-background px-3 py-2 text-sm placeholder:text-muted/60 ${focusRing}`;
 
 function field(data: FormData, name: string): string {
   const value = data.get(name);
