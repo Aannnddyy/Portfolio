@@ -12,7 +12,11 @@ export interface ContactLink {
 
 export interface Identity {
   name: string;
+  firstName: string;
   role: string;
+  photo: { src: string; alt: string };
+  /** Lo que estoy haciendo ahora mismo. */
+  now: readonly string[];
   tagline: string;
   location: string;
   email: string;
