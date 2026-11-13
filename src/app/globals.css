@@ -1,44 +1,24 @@
 @import "tailwindcss";
 
 /*
- * Tema editorial: crema cálido + burdeos.
- * Textos con contraste ≥ 4.5:1 tanto sobre crema como sobre burdeos.
+ * Minimal editorial: papel cálido, tinta casi negra y una sola serif.
+ * Sin color de acento; la jerarquía la marcan el tamaño y el espacio.
+ * `--muted` mantiene contraste ≥ 4.5:1 sobre el fondo.
  */
 :root {
   color-scheme: light;
-  --background: #efeae4;
-  --foreground: #2a1b1d;
-  --surface: #f7f3ee;
-  --muted: #6b5a5c;
-  --border: #d8cec5;
-  --accent: #6e1d27;
-  --cream: #f5efe8;
-  --sand: #e4ddd5;
+  --background: #f3f0ea;
+  --foreground: #1c1a17;
+  --muted: #6b655e;
+  --rule: #d9d3c9;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
   --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-accent: var(--accent);
-  --color-cream: var(--cream);
-  --color-sand: var(--sand);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-bodoni);
-
-  --animate-marquee: marquee 40s linear infinite;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
+  --color-rule: var(--rule);
+  --font-serif: var(--font-newsreader);
 }
 
 html {
@@ -57,6 +37,6 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--cream);
+  background: var(--foreground);
+  color: var(--background);
 }
