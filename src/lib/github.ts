@@ -17,15 +17,20 @@ function toRepo(repo: GitHubRepoResponse): Repo {
   };
 }
 
+interface GetReposOptions {
+  /** Nombres de repos a omitir (sin distinguir mayúsculas). */
+  exclude?: readonly string[];
+  limit?: number;
+}
+
 /**
- * Obtiene los repos públicos de un usuario (sin forks ni archivados).
- * Si `featured` no está vacío, esos repos van primero en el orden indicado.
+ * Obtiene los repos públicos de un usuario (sin forks ni archivados),
+ * ordenados por actividad reciente.
  * Nunca lanza: los fallos se devuelven como `{ status: "error" }`.
  */
 export async function getRepos(
   username: string,
-  featured: readonly string[],
-  limit = 6,
+  { exclude = [], limit = 6 }: GetReposOptions = {},
 ): Promise<ReposResult> {
   "use cache";
 
@@ -51,24 +56,21 @@ export async function getRepos(
         message:
           res.status === 404
             ? `El usuario "${username}" no existe en GitHub.`
-            : `GitHub respondió con ${res.status}.`,
+            : res.status === 403 || res.status === 429
+              ? "Se ha alcanzado el límite de peticiones de la API de GitHub."
+              : `GitHub respondió con el estado ${res.status}.`,
       };
     }
 
+    const excluded = new Set(exclude.map((name) => name.toLowerCase()));
     const data = (await res.json()) as GitHubRepoResponse[];
-    const repos = data.filter((r) => !r.fork && !r.archived).map(toRepo);
-
-    const rank = (name: string) => {
-      const i = featured.indexOf(name);
-      return i === -1 ? Number.POSITIVE_INFINITY : i;
-    };
-    const sorted =
-      featured.length > 0
-        ? [...repos].sort((a, b) => rank(a.name) - rank(b.name))
-        : repos;
+    const repos = data
+      .filter((r) => !r.fork && !r.archived && !excluded.has(r.name.toLowerCase()))
+      .map(toRepo)
+      .slice(0, limit);
 
     cacheLife("hours");
-    return { status: "ok", repos: sorted.slice(0, limit) };
+    return { status: "ok", repos };
   } catch {
     cacheLife("minutes");
     return { status: "error", message: "Error de red al contactar con GitHub." };
