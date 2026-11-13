@@ -1,34 +1,23 @@
 import type { Repo } from "@/types/github";
 import { sectionCopy } from "@/content/site";
-import { card, tag, textLink } from "@/lib/ui";
+import { focusRingLight } from "@/lib/ui";
 
 const dateFormatter = new Intl.DateTimeFormat("es-ES", {
   month: "short",
   year: "numeric",
 });
 
+const linkClass = `text-xs tracking-[0.18em] uppercase underline decoration-cream/40 underline-offset-4 hover:decoration-cream ${focusRingLight}`;
+
+/** Tarjeta de repo sobre la franja burdeos. */
 export function ProjectCard({ repo }: { repo: Repo }) {
   const copy = sectionCopy.projects;
   return (
-    <article
-      className={`${card} flex h-full flex-col p-5 transition-colors hover:border-muted`}
-    >
-      <h4 className="font-mono text-sm font-semibold break-words">{repo.name}</h4>
-      <p className="mt-2 flex-1 text-sm text-muted">
-        {repo.description ?? copy.noDescription}
-      </p>
+    <article className="flex h-full flex-col border border-cream/25 p-6 transition-colors hover:border-cream/60">
+      <h4 className="font-serif text-2xl break-words">{repo.name}</h4>
+      <p className="mt-2 flex-1 text-sm text-cream/80">{repo.description ?? copy.noDescription}</p>
 
-      {repo.topics.length > 0 && (
-        <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Temas">
-          {repo.topics.slice(0, 4).map((topic) => (
-            <li key={topic} className={tag}>
-              {topic}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <dl className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">
+      <dl className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-cream/75">
         {repo.language && (
           <div>
             <dt className="sr-only">Lenguaje</dt>
@@ -45,25 +34,18 @@ export function ProjectCard({ repo }: { repo: Repo }) {
         <div>
           <dt className="sr-only">Última actualización</dt>
           <dd>
-            <time dateTime={repo.pushedAt}>
-              {dateFormatter.format(new Date(repo.pushedAt))}
-            </time>
+            <time dateTime={repo.pushedAt}>{dateFormatter.format(new Date(repo.pushedAt))}</time>
           </dd>
         </div>
       </dl>
 
-      <div className="mt-5 flex gap-4 text-sm">
-        <a href={repo.url} target="_blank" rel="noopener noreferrer" className={textLink}>
+      <div className="mt-5 flex gap-5">
+        <a href={repo.url} target="_blank" rel="noopener noreferrer" className={linkClass}>
           {copy.codeLink}
           <span className="sr-only"> de {repo.name} (se abre en otra pestaña)</span>
         </a>
         {repo.homepage && (
-          <a
-            href={repo.homepage}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={textLink}
-          >
+          <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className={linkClass}>
             {copy.demoLink}
             <span className="sr-only"> de {repo.name} (se abre en otra pestaña)</span>
           </a>

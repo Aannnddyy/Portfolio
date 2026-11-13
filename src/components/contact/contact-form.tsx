@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { sectionCopy } from "@/content/site";
-import { buttonPrimary, focusRing } from "@/lib/ui";
+import { buttonPrimaryLight, focusRingLight, label } from "@/lib/ui";
 
 const copy = sectionCopy.contact.form;
 
-const fieldClass = `mt-1.5 block w-full rounded-xl border border-border bg-background px-3 py-2 text-sm placeholder:text-muted/60 ${focusRing}`;
+/** Campos con solo línea inferior, pensados para la franja burdeos. */
+const fieldClass = `mt-2 block w-full border-0 border-b border-cream/40 bg-transparent px-0 py-2 text-base tracking-normal normal-case text-cream transition-colors focus:border-cream ${focusRingLight}`;
 
 function field(data: FormData, name: string): string {
   const value = data.get(name);
@@ -32,9 +33,9 @@ export function ContactForm({ email }: { email: string }) {
   }
 
   return (
-    <form action={send} className="space-y-4">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block text-sm">
+    <form action={send} className="space-y-6">
+      <div className="grid gap-6 sm:grid-cols-2">
+        <label className={`block ${label} text-cream/80`}>
           {copy.name}
           <input
             name="name"
@@ -45,7 +46,7 @@ export function ContactForm({ email }: { email: string }) {
             className={fieldClass}
           />
         </label>
-        <label className="block text-sm">
+        <label className={`block ${label} text-cream/80`}>
           {copy.email}
           <input
             name="email"
@@ -57,7 +58,7 @@ export function ContactForm({ email }: { email: string }) {
           />
         </label>
       </div>
-      <label className="block text-sm">
+      <label className={`block ${label} text-cream/80`}>
         {copy.message}
         <textarea
           name="message"
@@ -68,10 +69,10 @@ export function ContactForm({ email }: { email: string }) {
         />
       </label>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <button type="submit" className={`${buttonPrimary} cursor-pointer`}>
+        <button type="submit" className={`${buttonPrimaryLight} cursor-pointer`}>
           {copy.submit}
         </button>
-        <p className="text-xs text-muted" aria-live="polite">
+        <p className="text-xs text-cream/75" aria-live="polite">
           {sent ? copy.sent : copy.hint}
         </p>
       </div>

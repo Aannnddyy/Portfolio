@@ -2,16 +2,24 @@
 export const focusRing =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
-export const buttonPrimary = `inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-background transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/20 ${focusRing}`;
+export const focusRingLight =
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream";
 
-export const buttonSecondary = `inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium transition hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent ${focusRing}`;
+const buttonBase =
+  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-xs font-medium tracking-[0.18em] uppercase transition-colors";
 
-export const textLink = `font-medium text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent ${focusRing}`;
+/** Botones sobre fondo crema. */
+export const buttonPrimary = `${buttonBase} border border-accent bg-accent text-cream hover:bg-transparent hover:text-accent ${focusRing}`;
+export const buttonOutline = `${buttonBase} border border-accent text-accent hover:bg-accent hover:text-cream ${focusRing}`;
 
-export const card = "rounded-2xl border border-border bg-surface";
+/** Botones sobre fondo burdeos. */
+export const buttonPrimaryLight = `${buttonBase} border border-cream bg-cream text-accent hover:bg-transparent hover:text-cream ${focusRingLight}`;
+export const buttonOutlineLight = `${buttonBase} border border-cream/70 text-cream hover:bg-cream hover:text-accent ${focusRingLight}`;
 
-export const tag =
-  "rounded-full bg-accent/10 px-2.5 py-0.5 text-xs text-accent";
+export const textLink = `text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent ${focusRing}`;
 
-/** Subtítulo pequeño en serif cursiva, usado dentro de las secciones. */
-export const eyebrow = "font-serif text-lg italic text-accent";
+/** Etiqueta pequeña en mayúsculas espaciadas (VISIÓN, PROYECTOS…). */
+export const label = "text-[0.7rem] font-medium tracking-[0.3em] uppercase";
+
+/** Título de sección en serif de alto contraste. */
+export const displayTitle = "font-serif uppercase leading-[0.95] tracking-tight";

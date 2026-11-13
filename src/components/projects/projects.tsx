@@ -2,12 +2,12 @@ import { Suspense } from "react";
 import { portfolio } from "@/content/profile";
 import { sectionCopy } from "@/content/site";
 import { getRepos } from "@/lib/github";
-import { card, textLink } from "@/lib/ui";
+import { buttonOutlineLight, displayTitle } from "@/lib/ui";
 import { Section } from "@/components/section";
 import { FeaturedProject } from "@/components/projects/featured-project";
 import { ProjectCard } from "@/components/projects/project-card";
 
-const gridClass = "grid gap-4 sm:grid-cols-2 lg:grid-cols-3";
+const gridClass = "grid gap-5 sm:grid-cols-2 lg:grid-cols-3";
 
 async function RepoList() {
   const copy = sectionCopy.projects;
@@ -18,16 +18,16 @@ async function RepoList() {
 
   if (result.status === "error") {
     return (
-      <div role="alert" className="rounded-2xl border border-red-300/30 bg-red-300/5 p-5 text-sm">
-        <p className="font-medium text-red-200">{copy.error}</p>
-        <p className="mt-1 text-muted">{result.message}</p>
+      <div role="alert" className="border border-cream/40 bg-cream/10 p-5 text-sm">
+        <p className="font-medium">{copy.error}</p>
+        <p className="mt-1 text-cream/80">{result.message}</p>
       </div>
     );
   }
 
   if (result.repos.length === 0) {
     return (
-      <p className="rounded-2xl border border-dashed border-border p-8 text-center text-sm text-muted">
+      <p className="border border-dashed border-cream/30 p-8 text-center text-sm text-cream/80">
         {copy.empty}
       </p>
     );
@@ -48,7 +48,7 @@ function RepoListSkeleton() {
   return (
     <ul className={gridClass} aria-busy="true" aria-label={sectionCopy.projects.loading}>
       {Array.from({ length: 3 }, (_, i) => (
-        <li key={i} className={`${card} h-44 animate-pulse`} />
+        <li key={i} className="h-48 animate-pulse border border-cream/20 bg-cream/5" />
       ))}
     </ul>
   );
@@ -58,23 +58,31 @@ export function Projects() {
   const copy = sectionCopy.projects;
   const { identity, featuredProject } = portfolio;
   return (
-    <Section id="proyectos" title={copy.title} accent={copy.accent} subtitle={copy.subtitle}>
+    <Section
+      id="proyectos"
+      eyebrow={copy.eyebrow}
+      title={copy.title}
+      subtitle={copy.subtitle}
+      tone="dark"
+    >
       <FeaturedProject project={featuredProject} />
 
-      <div className="mt-16">
-        <h3 className="font-serif text-2xl font-medium">{copy.othersTitle}</h3>
-        <p className="mt-1 mb-6 text-sm text-muted">{copy.othersSubtitle}</p>
+      <div className="mt-20">
+        <h3 className={`${displayTitle} text-center text-3xl sm:text-4xl`}>{copy.othersTitle}</h3>
+        <p className="mt-3 mb-10 text-center text-sm text-cream/80">{copy.othersSubtitle}</p>
         <Suspense fallback={<RepoListSkeleton />}>
           <RepoList />
         </Suspense>
-        <a
-          href={`https://github.com/${identity.githubUsername}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`mt-6 inline-block text-sm ${textLink}`}
-        >
-          {copy.viewOnGithub} →
-        </a>
+        <div className="mt-10 text-center">
+          <a
+            href={`https://github.com/${identity.githubUsername}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonOutlineLight}
+          >
+            {copy.viewOnGithub}
+          </a>
+        </div>
       </div>
     </Section>
   );
