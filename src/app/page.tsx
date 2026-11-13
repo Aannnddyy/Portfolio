@@ -1,7 +1,19 @@
+import { SiteHeader } from "@/components/site-header";
+import { Hero } from "@/components/hero";
+import { TechStack } from "@/components/tech-stack";
+import { Projects } from "@/components/projects/projects";
+import { SiteFooter } from "@/components/site-footer";
+
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-6">
-      <h1 className="text-3xl font-semibold tracking-tight">Portfolio</h1>
-    </main>
+    <>
+      <SiteHeader />
+      <main className="flex-1">
+        <Hero />
+        <TechStack />
+        <Projects />
+      </main>
+      <SiteFooter />
+    </>
   );
 }
